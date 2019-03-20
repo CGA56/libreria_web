@@ -1,17 +1,12 @@
-<!-- <form action="/login" method="post">
+<div class="form-group col-md-12">
+  <h1 class="col-md-6 offset-md-4">{{mensaje}}</h1>
   <br>
+  <input type="email" class="form-control col-md-3 offset-md-4" #email name="email" id="email"
+    aria-describedby="emailHelpId" placeholder={{correo}}>
   <br>
+  <input type="password" name="password" #password id="password" class="form-control col-md-3 offset-md-4"
+    aria-describedby="password" placeholder={{mnsContrasena}}>
   <br>
-  <br> -->
-  <div class="form-group col-md-12">
-    <h1 class="col-md-6 offset-md-4">{{mensaje}}</h1>
-    <br>
-    <input type="email" class="form-control col-md-3 offset-md-4" #email name="email" id="email" aria-describedby="emailHelpId"
-      placeholder={{correo}}>
-    <br>
-    <input type="password" name="password" #password id="password" class="form-control col-md-3 offset-md-4"
-      aria-describedby="password"  placeholder={{mnsContrasena}}>
-    <br>
-    <button type="button" (click)="login(email.value, password.value,$event)" class="btn  btn-outline-primary  col-md-3 offset-md-4">{{btnMensaje}}</button>
-  </div>
-<!-- </form> -->
+  <button type="button" (click)="login(email.value, password.value,$event)"
+    class="btn  btn-outline-primary  col-md-3 offset-md-4">{{btnMensaje}}</button>
+</div>

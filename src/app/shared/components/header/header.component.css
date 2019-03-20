@@ -1,0 +1,10 @@
+nav .navbar-nav li a:focus{
+    color: white !important;
+    background-color:  rgb(162, 195, 206);
+
+}
+nav .navbar-nav li a:hover{
+    color: blue !important;
+    
+
+}

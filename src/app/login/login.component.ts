@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login.service';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,12 +9,13 @@ import {  Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  mensaje: String = 'Inicio de session';
-  correo: String = 'Correo electronico';
-  mnsContrasena:string='Contraseña';
-  btnMensaje: String = 'Login';
+  mensaje: string = 'Inicio de session';
+  correo: string = 'Correo electronico';
+  mnsContrasena: string = 'Contraseña';
+  btnMensaje: string = 'Login';
+  loginOut: string ='disabled';
 
-  constructor(private loginService: LoginService, private router:Router) { }
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit() {
     // this.loginService.login('cristo@pepe.com', 'pepe123343').subscribe(
@@ -24,24 +25,29 @@ export class LoginComponent implements OnInit {
 
   }
 
-  login(correo:string,password:string,event:Event){
+
+  login(correo: string, password: string, event: Event) {
     console.log(correo);
     event.preventDefault();
-    this.loginService.login(correo,password).subscribe(
+    this.loginService.login(correo, password).subscribe(
       res => {
-        console.log(res);
-        this.navigate();
+        this.loginService.setToken(res.token);
+        if ( this.loginService.getToken()) {
+          this.loginOut = ('');
+          this.navigate('/dashboard');
+        }
       },
-      error=>{
+      error => {
+        this.navigate('');
         console.log(error);
       }
 
-      );
+    );
   };
 
-  navigate(){
-    this.router.navigateByUrl('/home');
+  navigate(url:string) {
+    this.router.navigateByUrl(url);
   };
-   
+
 
 }
